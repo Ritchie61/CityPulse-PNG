@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, FlatList, Button, TouchableOpacity, Alert } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  Button,
+  TouchableOpacity,
+  Alert,
+} from "react-native";
 import { fetchReports } from "../services/api";
 
 export default function HomeScreen({ navigation }) {
@@ -20,8 +27,11 @@ export default function HomeScreen({ navigation }) {
 
   const renderItem = ({ item }) => (
     <TouchableOpacity
-      onPress={() => navigation.navigate("MapView")}
-      style={{ padding: 12, borderBottomWidth: 1 }}
+      style={{
+        padding: 12,
+        borderBottomWidth: 1,
+        borderColor: "#ddd",
+      }}
     >
       <Text style={{ fontWeight: "bold" }}>{item.type}</Text>
       <Text>{item.description}</Text>
@@ -31,14 +41,31 @@ export default function HomeScreen({ navigation }) {
 
   return (
     <View style={{ flex: 1, padding: 16 }}>
-      <Button
-        title="Report New Hazard"
-        onPress={() => navigation.navigate("ReportHazard")}
-      />
+      {/* ACTION BUTTONS */}
+      <View style={{ marginBottom: 16 }}>
+        <Button
+          title="Report New Hazard"
+          onPress={() => navigation.navigate("ReportHazard")}
+        />
+        <View style={{ height: 8 }} />
+        <Button
+          title="My Profile"
+          onPress={() => navigation.navigate("Profile")}
+        />
+        <View style={{ height: 8 }} />
+        <Button
+          title="Leaderboard"
+          onPress={() => navigation.navigate("Leaderboard")}
+        />
+      </View>
+
+      {/* REPORT LIST */}
       <FlatList
         data={reports}
         keyExtractor={(item) => item.id.toString()}
         renderItem={renderItem}
+        refreshing={false}
+        onRefresh={loadReports}
       />
     </View>
   );
