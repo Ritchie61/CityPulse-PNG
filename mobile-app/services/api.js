@@ -1,4 +1,4 @@
-const API_BASE = "https://citypulse-backend.onrender.com";
+const API_BASE = "https://YOUR-RENDER-URL.onrender.com";
 
 export const fetchReports = async () => {
   const response = await fetch(`${API_BASE}/reports`);
@@ -11,10 +11,8 @@ export const fetchReports = async () => {
 export const createReport = async (data) => {
   const response = await fetch(`${API_BASE}/reports`, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(data)
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
   });
 
   if (!response.ok) {
