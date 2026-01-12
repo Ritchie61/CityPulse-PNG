@@ -1,0 +1,54 @@
+CityPulse/
+│
+├── backend/                 # FastAPI backend
+│   ├── app/
+│   │   ├── main.py          # FastAPI entry point
+│   │   ├── models.py        # Database models (Users, Reports, Badges)
+│   │   ├── routes/
+│   │   │   ├── auth.py      # Login / signup endpoints
+│   │   │   ├── reports.py   # Hazard report CRUD endpoints
+│   │   │   └── gamification.py  # Points & badges endpoints
+│   │   ├── utils/
+│   │   │   ├── notifications.py  # OneSignal push notifications
+│   │   │   ├── social_posting.py # Facebook Graph API posting
+│   │   │   └── geo_utils.py      # Distance calculation, map utilities
+│   │   └── db.py            # Database connection (PostgreSQL / Supabase)
+│   ├── requirements.txt     # Python dependencies
+│   └── Dockerfile           # For containerization
+│
+├── mobile-app/              # React Native mobile app (citizen-facing)
+│   ├── assets/              # Images, icons, fonts
+│   ├── components/          # Reusable UI components
+│   │   ├── Button.js
+│   │   ├── InputField.js
+│   │   └── HazardCard.js
+│   ├── screens/             # Screens
+│   │   ├── LoginScreen.js
+│   │   ├── SignupScreen.js
+│   │   ├── HomeScreen.js
+│   │   ├── ReportHazardScreen.js
+│   │   ├── MapViewScreen.js
+│   │   └── ProfileScreen.js
+│   ├── services/            # API calls, offline storage, notifications
+│   │   ├── api.js
+│   │   ├── offlineStorage.js
+│   │   └── notifications.js
+│   ├── App.js               # React Native entry point
+│   └── package.json
+│
+├── admin-dashboard/         # React.js / Next.js dashboard (admin)
+│   ├── components/          # Map, ReportCard, Filters, Leaderboard
+│   ├── pages/               # Dashboard, Reports, Users
+│   ├── services/            # API calls, notifications
+│   ├── App.js
+│   └── package.json
+│
+├── shared/                  # Shared resources between apps
+│   ├── constants/           # Hazard types, badge types, config
+│   └── utils/               # Helper functions
+│
+├── docs/                    # Documentation & diagrams
+│   ├── GAN_test_diagram.png
+│   └── MVP_blueprint.pdf
+│
+└── README.md                # Project overview, setup instructions
