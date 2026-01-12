@@ -1,6 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.routes import reports
+from app.routes import gamification
+
+app.include_router(gamification.router, prefix="/gamification")
 
 app = FastAPI(title="CityPulse PNG API")
 
